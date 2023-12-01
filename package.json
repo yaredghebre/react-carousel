@@ -13,8 +13,12 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^2.0.18",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.19",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.7",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -30,5 +34,9 @@
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
     "vite": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }

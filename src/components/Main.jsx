@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Carousel from './Carousel';
 import { posts } from '../assets/db/posts';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const Main = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +69,7 @@ const Main = () => {
               onClick={handleButtonPrev}
               className="rounded-md bg-blue-500 px-5 py-2 font-bold text-white duration-150 hover:bg-blue-800"
             >
-              Indietro
+              <ArrowBackIcon className="hover:scale-125" />
             </button>
 
             {/* Next */}
@@ -75,7 +77,7 @@ const Main = () => {
               onClick={handleButtonNext}
               className="rounded-md bg-blue-500 px-5 py-2 font-bold text-white duration-150 hover:bg-blue-800"
             >
-              Avanti
+              <ArrowForwardIcon className="hover:scale-125" />
             </button>
           </div>
         </div>
