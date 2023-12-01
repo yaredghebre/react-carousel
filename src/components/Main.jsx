@@ -8,19 +8,24 @@ const Main = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slideInterval, setSlideInterval] = useState(null);
 
+  // Controllo su next
   const handleButtonNext = () => {
     setCurrentIndex((prevIndex) => {
       const nextIndex = prevIndex + 1;
       return nextIndex >= posts.length ? 0 : nextIndex;
     });
+    clearInterval(slideInterval);
   };
 
+  // Controllo su prev
   const handleButtonPrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? posts.length - 1 : prevIndex - 1,
     );
+    clearInterval(slideInterval);
   };
 
+  // Controllo su frecce
   const handleKeyboard = (e) => {
     if (e.key === 'ArrowRight') {
       handleButtonNext();
@@ -36,10 +41,11 @@ const Main = () => {
     };
   }, []);
 
+  // Autoplayer
   useEffect(() => {
     const postId = setInterval(() => {
       handleButtonNext();
-    }, 2000);
+    }, 3000);
 
     setSlideInterval(postId);
 
@@ -47,6 +53,21 @@ const Main = () => {
       clearInterval(postId);
     };
   }, [currentIndex]);
+
+  // Slider Icons
+  const handleSliderIcons = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const sliderIcons = posts.map((post, index) => (
+    <button
+      key={index}
+      onClick={() => handleSliderIcons(index)}
+      className={`h-3 w-9 rounded ${
+        index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+      } mx-1`}
+    ></button>
+  ));
 
   return (
     <div>
@@ -61,6 +82,9 @@ const Main = () => {
             image={posts[currentIndex].image}
             content={posts[currentIndex].content}
           />
+
+          {/* Slider */}
+          <div className="mt-4 flex justify-center gap-1">{sliderIcons}</div>
 
           {/* Buttons */}
           <div className="mt-4 flex justify-center gap-5">
