@@ -37,7 +37,7 @@ const Main = () => {
             {/* Prev */}
             <button
               onClick={handleButtonPrev}
-              className="rounded-md bg-blue-500 px-5 py-2 font-bold text-white duration-150 hover:bg-blue-700"
+              className="rounded-md bg-blue-500 px-5 py-2 font-bold text-white duration-150 hover:bg-blue-800"
             >
               Indietro
             </button>
@@ -45,7 +45,7 @@ const Main = () => {
             {/* Next */}
             <button
               onClick={handleButtonNext}
-              className="rounded-md bg-blue-500 px-5 py-2 font-bold text-white duration-150 hover:bg-blue-700"
+              className="rounded-md bg-blue-500 px-5 py-2 font-bold text-white duration-150 hover:bg-blue-800"
             >
               Avanti
             </button>
