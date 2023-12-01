@@ -27,10 +27,10 @@ const Main = () => {
 
   // Controllo su frecce
   const handleKeyboard = (e) => {
-    if (e.key === 'ArrowRight') {
-      handleButtonNext();
-    } else if (e.key === 'ArrowLeft') {
+    if (e.key === 'ArrowLeft') {
       handleButtonPrev();
+    } else if (e.key === 'ArrowRight') {
+      handleButtonNext();
     }
   };
 
