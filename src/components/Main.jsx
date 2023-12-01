@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Carousel from './Carousel';
 import { posts } from '../assets/db/posts';
 
 const Main = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideInterval, setSlideInterval] = useState(null);
 
   const handleButtonNext = () => {
     setCurrentIndex((prevIndex) => {
@@ -17,6 +18,33 @@ const Main = () => {
       prevIndex === 0 ? posts.length - 1 : prevIndex - 1,
     );
   };
+
+  const handleKeyboard = (e) => {
+    if (e.key === 'ArrowRight') {
+      handleButtonNext();
+    } else if (e.key === 'ArrowLeft') {
+      handleButtonPrev();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboard);
+    return () => {
+      document.removeEventListener('keyup', handleKeyboard);
+    };
+  }, []);
+
+  useEffect(() => {
+    const postId = setInterval(() => {
+      handleButtonNext();
+    }, 2000);
+
+    setSlideInterval(postId);
+
+    return () => {
+      clearInterval(postId);
+    };
+  }, [currentIndex]);
 
   return (
     <div>
